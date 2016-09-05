@@ -1,0 +1,9 @@
+<ion-view view-title="Playlists">
+  <ion-content overflow-scroll="false">
+    <ion-list>
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.ID_USUARIO}}">
+        {{playlist.TX_LOGIN}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

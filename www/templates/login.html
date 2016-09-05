@@ -1,0 +1,25 @@
+  <ion-header-bar class="bar bar-positive">
+    <h1 class="title">Login</h1>
+  </ion-header-bar>
+  <ion-content overflow-scroll="false">
+    <form ng-submit="doLogin()">
+      <div class="list list-inset">
+        <label class="item item-input-inset">
+          <span class="input-label">Usuário</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input-inset">
+          <span class="input-label">Senha</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+         
+        </label>
+       <div class="padding-vertical" >
+          <button class="button button-block button-positive button-inset" type="submit">Entrar</button>
+       </div>
+       <div class="padding-vertical" >
+       <p ng-bind="loginData.errMsg"></p>
+       </div>      
+    </form>
+
+  </ion-content>
