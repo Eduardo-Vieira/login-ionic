@@ -3,23 +3,30 @@
   </ion-header-bar>
   <ion-content overflow-scroll="false">
     <form ng-submit="doLogin()">
+      <div  class="frmico-login">
+        <img src="../img/ionic.png" class="img-login">
+      </div>
+       <!-- Mensagem de erro de login-->
+       <div class="card" ng-show="msgerr">
+          <div class="item item-text-wrap red">
+          <div class="close"><a hurl="#" ng-click="Close()"><i class="icon ion-close"></i></a></div>
+            <p ng-bind="loginData.errMsg"></p>
+          </div>
+       </div>   
+
       <div class="list list-inset">
         <label class="item item-input-inset">
-          <span class="input-label">Usuário</span>
+          <span class="input-label"><i class="icon ion-person"></i> Usuário</span>
           <input type="text" ng-model="loginData.username">
         </label>
         <label class="item item-input-inset">
-          <span class="input-label">Senha</span>
+          <span class="input-label"><i class="icon ion-key"></i> Senha</span>
           <input type="password" ng-model="loginData.password">
         </label>
          
-        </label>
        <div class="padding-vertical" >
           <button class="button button-block button-positive button-inset" type="submit">Entrar</button>
-       </div>
-       <div class="padding-vertical" >
-       <p ng-bind="loginData.errMsg"></p>
-       </div>      
+       </div>  
     </form>
 
   </ion-content>

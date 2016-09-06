@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
 
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.msgerr = false;
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
@@ -19,6 +20,7 @@ angular.module('starter.controllers', [])
             ).then(function (response){
               if(response.data.record.auth=='false'){
                 $scope.loginData.errMsg ='Usuário ou Senha invalido..';
+                $scope.msgerr = true;
               }else{
                 $state.go('app.playlists')
               }                
@@ -29,6 +31,10 @@ angular.module('starter.controllers', [])
   $scope.logout = function() {
     $state.go('login');
   };
+  // Close mensage de erro
+  $scope.Close = function(){
+    $scope.msgerr = false;
+  }
 
 })
 
