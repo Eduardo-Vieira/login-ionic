@@ -35,7 +35,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
-      controller: 'AppCtrl'
+      controller: 'AppCtrl',
+      cache:false
     })
 
   .state('app.search', {
@@ -62,7 +63,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           templateUrl: 'templates/playlists.html',
           controller: 'PlaylistsCtrl'
         }
-      }
+      },
+      cache:false
+
     })
 
   .state('app.single', {
@@ -79,9 +82,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/adduser.html',
-        controller: 'AdduserCtrl'
+        controller: 'PlaylistsCtrl'
       }
-    }
+    },
+    cache:false
   });
 
   // if none of the above states are matched, use this as the fallback

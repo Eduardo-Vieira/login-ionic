@@ -32,21 +32,17 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function($scope,$http) {
+.controller('PlaylistsCtrl', function($scope,$http,$state) {
   // lita de usuarios
+  $scope.playlists ={};
+  $scope.UserData = {};
   $http.get('http://www.wrsolucoesinformatica.com/server.php?ident=listUser'
         ).then(function (response){
                $scope.playlists = response.data.listUsuario;
-        });    
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
-.controller('AdduserCtrl', function($scope, $http, $stateParams, $ionicModal, $timeout,$state) {
-   $scope.UserData = {};
+        }); 
+     
   // Salvar usuario via Post
   $scope.doSalvar = function() {
-
       $http({
               method: 'POST',
               url: 'http://www.wrsolucoesinformatica.com/server.php?ident=addUser',
@@ -60,15 +56,14 @@ angular.module('starter.controllers', [])
             }
         ).then(function (response){
               $scope.UserData = {};
-              $scope.playlists ={};
-              $http.get('http://www.wrsolucoesinformatica.com/server.php?ident=listUser'
-              ).then(function (response){
-                    $scope.playlists = response.data.listUsuario;
-              });  
               $state.go('app.playlists');
               // console.log(response.data);
         });
 
-  }
+       
 
-});
+  }   
+})
+
+.controller('PlaylistCtrl', function($scope, $stateParams) {
+})
