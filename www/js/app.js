@@ -73,7 +73,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
+  })
+  .state('app.adduser', {
+    url: '/adduser',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/adduser.html',
+        controller: 'AdduserCtrl'
+      }
+    }
   });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });

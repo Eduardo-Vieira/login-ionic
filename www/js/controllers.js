@@ -33,33 +33,42 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistsCtrl', function($scope,$http) {
+  // lita de usuarios
   $http.get('http://www.wrsolucoesinformatica.com/server.php?ident=listUser'
         ).then(function (response){
                $scope.playlists = response.data.listUsuario;
-               Console.log(response.data.listUsuario);           
         });    
-  
-  
-  // $scope.playlists = [
-  //   { title: 'Reggae', id: 1 },
-  //   { title: 'Chill', id: 2 },
-  //   { title: 'Dubstep', id: 3 },
-  //   { title: 'Indie', id: 4 },
-  //   { title: 'Rap', id: 5 },
-  //   { title: 'Cowbell', id: 6 },
-  //   { title: 'Reggae', id: 7 },
-  //   { title: 'Chill', id: 8 },
-  //   { title: 'Dubstep', id: 9 },
-  //   { title: 'Indie', id: 10 },
-  //   { title: 'Rap', id: 11 },
-  //   { title: 'Cowbell', id: 12 },
-  //   { title: 'Chill', id: 13 },
-  //   { title: 'Dubstep', id: 14 },
-  //   { title: 'Indie', id: 15 },
-  //   { title: 'Rap', id: 16 },
-  //   { title: 'Cowbell', id: 17 }
-  // ];
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+.controller('AdduserCtrl', function($scope, $http, $stateParams, $ionicModal, $timeout,$state) {
+   $scope.UserData = {};
+  // Salvar usuario via Post
+  $scope.doSalvar = function() {
+
+      $http({
+              method: 'POST',
+              url: 'http://www.wrsolucoesinformatica.com/server.php?ident=addUser',
+              data:{
+                TX_NOME: $scope.UserData.TX_NOME,
+                TX_LOGIN: $scope.UserData.TX_LOGIN,
+                TX_SENHA: $scope.UserData.TX_SENHA,
+                TX_EMAIL: $scope.UserData.TX_EMAIL
+            },
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }
+        ).then(function (response){
+              $scope.UserData = {};
+              $scope.playlists ={};
+              $http.get('http://www.wrsolucoesinformatica.com/server.php?ident=listUser'
+              ).then(function (response){
+                    $scope.playlists = response.data.listUsuario;
+              });  
+              $state.go('app.playlists');
+              // console.log(response.data);
+        });
+
+  }
+
 });

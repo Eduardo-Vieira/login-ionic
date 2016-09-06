@@ -1,1 +1,8 @@
 /* Empty. Add your own CSS if you like */
+.plus{
+    border-radius: 50%;
+    position:absolute;
+    margin-top: 100%;
+    right:5%;
+    z-index: 5;
+}

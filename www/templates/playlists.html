@@ -1,9 +1,14 @@
-<ion-view view-title="Playlists">
+<ion-view view-title="Lista de Usuário">
   <ion-content overflow-scroll="false">
+     
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.ID_USUARIO}}">
         {{playlist.TX_LOGIN}}
       </ion-item>
+     
     </ion-list>
+
   </ion-content>
+  <a href="#/app/adduser" class="button button-assertive plus" ><i class="ion-plus"></i></a>
 </ion-view>
+
